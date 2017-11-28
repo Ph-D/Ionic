@@ -6,7 +6,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AboutPage } from '../pages/about/about';
@@ -18,6 +17,7 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 
 import { baseURL } from '../shared/baseurl';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +27,7 @@ import { baseURL } from '../shared/baseurl';
     ContactPage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -46,9 +47,7 @@ import { baseURL } from '../shared/baseurl';
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
-    {
-      provide: 'BaseURL', useValue: baseURL
-    }
+    { provide: 'BaseURL', useValue: baseURL}
   ]
 })
 export class AppModule {}

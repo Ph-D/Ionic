@@ -8,7 +8,6 @@ import { ProcessHttpmsgProvider } from '../process-httpmsg/process-httpmsg';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/throw';
 
 /*
   Generated class for the LeaderProvider provider.
@@ -20,25 +19,25 @@ import 'rxjs/add/operator/throw';
 export class LeaderProvider {
 
 
-  constructor(public http: Http, private processHttpmsgService: ProcessHttpmsgProvider) {
+  constructor(public http: Http, private processHTTPMsgService: ProcessHttpmsgProvider) {
     console.log('Hello LeaderProvider Provider');
   }
 
   getLeaders(): Observable<Leader[]> {
       return this.http.get(baseURL + 'leaders')
-      .map(res => { return this.processHttpmsgService.extractData(res)})
-      .catch(error => {return this.processHttpmsgService.handleError(error)});
+      .map(res => { return this.processHTTPMsgService.extractData(res)})
+      .catch(error => {return this.processHTTPMsgService.handleError(error)});
   }
 
   getLeader(id: number): Observable<Leader>{
       return this.http.get(baseURL + 'leaders' + id)
-      .map(res => { return this.processHttpmsgService.extractData(res)})
-      .catch(error => {return this.processHttpmsgService.handleError(error)});
+      .map(res => { return this.processHTTPMsgService.extractData(res)})
+      .catch(error => {return this.processHTTPMsgService.handleError(error)});
   }
 
   getFeaturedLeader(): Observable<Leader>{
     return this.http.get(baseURL + 'leaders?featured=true')
-    .map(res => { return this.processHttpmsgService.extractData(res)})
-    .catch(error => {return this.processHttpmsgService.handleError(error)});
+    .map(res => { return this.processHTTPMsgService.extractData(res)[0]})
+    .catch(error => {return this.processHTTPMsgService.handleError(error)});
   }
 }

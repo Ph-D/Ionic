@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/throw';
+import 'rxjs/add/observable/throw';
 /*
   Generated class for the ProcessHttpmsgProvider provider.
 
@@ -13,7 +11,7 @@ import 'rxjs/add/operator/throw';
 @Injectable()
 export class ProcessHttpmsgProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     console.log('Hello ProcessHttpmsgProvider Provider');
   }
 
