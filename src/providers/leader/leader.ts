@@ -29,6 +29,7 @@ export class LeaderProvider {
       .catch(error => {return this.processHTTPMsgService.handleError(error)});
   }
 
+
   getLeader(id: number): Observable<Leader>{
       return this.http.get(baseURL + 'leaders' + id)
       .map(res => { return this.processHTTPMsgService.extractData(res)})
