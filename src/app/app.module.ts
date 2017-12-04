@@ -12,6 +12,7 @@ import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { ContactPage } from '../pages/contact/contact';
 import { DishdetailPage } from '../pages/dishdetail/dishdetail';
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { DishProvider } from '../providers/dish/dish';
 import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
@@ -27,7 +28,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage
   ],
   imports: [
     HttpModule,
@@ -41,7 +43,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage
   ],
   providers: [
     StatusBar,
