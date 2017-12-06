@@ -6,22 +6,22 @@
 -->
 <ion-header>
   <ion-toolbar color="primary-pale">
-    <ion-button start>
+    <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
-    </ion-button start>
+    </ion-buttons>
     <ion-title>Add Comment</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <form [formGroup]="reservation" (ngSubmit)="onSubmit()">
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
      <ion-item>
         <ion-label floating>Your Name</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
+        <ion-input type="text" formControlName="author"></ion-input>
      </ion-item>
      <ion-item>
         <ion-range formControlName="rating" step=5>
@@ -30,8 +30,8 @@
           </ion-range>
      </ion-item>
      <ion-item>
-        <textarea type="text" formControlName="comment"></textarea>
-     </ion-item>
-     <button ion-button type="submit" [disabled]="!commment.valid">Add</button>     
+      <ion-textarea formControlName="comments" placeholder="Enter a description"></ion-textarea>
+    </ion-item>
+     <button ion-button type="submit" [disabled]="!commentForm.valid">Add</button>     
   </form>
 </ion-content>

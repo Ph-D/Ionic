@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
+import { CommentPage } from '../pages/comment/comment';
 import { ContactPage } from '../pages/contact/contact';
 import { DishdetailPage } from '../pages/dishdetail/dishdetail';
 import { ReservationPage } from '../pages/reservation/reservation';
@@ -31,7 +32,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     ContactPage,
     DishdetailPage,
     FavoritesPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage
   ],
   imports: [
     HttpModule,
@@ -47,7 +49,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     ContactPage,
     DishdetailPage,
     FavoritesPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage
   ],
   providers: [
     StatusBar,
