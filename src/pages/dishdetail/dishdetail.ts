@@ -75,13 +75,12 @@ export class DishdetailPage {
 
   }
 
-
     openReserve(){
       let modal = this.modalCtrl.create(CommentPage);
       modal.onDidDismiss( data => {
-        this.dish.comments.push(data);
-        console.log(data);
-      })
+         this.dish.comments.push(data);
+        // console.log(data);
+      });
       modal.present();
     }
 

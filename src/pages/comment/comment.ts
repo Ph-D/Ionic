@@ -26,7 +26,7 @@ export class CommentPage {
 ) {
   this.commentForm = this.formbuilder.group({
     rating: '5',
-    comments: '',
+    comment: '',
     author: ['', Validators.required],
     date: new Date().toISOString()
 
@@ -37,9 +37,10 @@ export class CommentPage {
     console.log('ionViewDidLoad CommentPage');
   }
 
-  // dismiss(){
-  //   this.viewCtrl.dismiss();
-  // }
+  dismiss(){
+    this.viewCtrl.dismiss(this.commentForm.value);
+    
+  }
 
   onSubmit(){
     this.viewCtrl.dismiss(this.commentForm.value);
