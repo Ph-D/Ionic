@@ -19,7 +19,7 @@ export class FavoritesPage implements OnInit {
 
   favorites: Dish[];
   errMess: string;
-
+  dishCopy: null;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private favoriteservice: FavoriteProvider,
   private toastCtrl: ToastController,
@@ -28,25 +28,18 @@ export class FavoritesPage implements OnInit {
   private storage : Storage,
   @Inject('BaseURL') private BaseURL) {
 
-    storage.get('favorites').then(favorites => ({
-        if(favorites){
-          
-          this.favoriteservice.patchValue({
-            '' : this.favorite
-          })
-        }
-    }));
-
-
   }
 
   ngOnInit(){
     this.favoriteservice.getFavorites()
-    .subscribe(favorites => this.favorites = favorites, 
-      errmess => this.errMess = errmess);
+    .subscribe(favorites => {
+      this.favorites = favorites; 
+      this.storage.set('favorites', this.favorites  );
+      this.storage.get('favorites').then((favorites) => {this.favorites = favorites});
+    },errmess => this.errMess = errmess );   
   }
-
-
+     
+      
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
   }
@@ -76,13 +69,15 @@ export class FavoritesPage implements OnInit {
               duration: 3000});
             loading.present();
             this.favoriteservice.deleteFavorite(id)
-              .subscribe(favorites => {this.favorites = favorites; loading.dismiss(); toast.present(); } ,
+              .subscribe(favorites => {this.favorites = favorites;  this.storage.set('favorites', this.favorites  ); loading.dismiss(); toast.present(); } ,
                 errmess =>{ this.errMess = errmess; loading.dismiss(); });
           }
         }
       ]
     });
- 
+    
+
+   
     alert.present();
     item.close();
   }
