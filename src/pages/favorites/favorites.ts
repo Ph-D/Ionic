@@ -27,6 +27,17 @@ export class FavoritesPage implements OnInit {
   private alertCtrl: AlertController,
   private storage : Storage,
   @Inject('BaseURL') private BaseURL) {
+
+    storage.get('favorites').then(favorites => ({
+        if(favorites){
+          
+          this.favoriteservice.patchValue({
+            '' : this.favorite
+          })
+        }
+    }));
+
+
   }
 
   ngOnInit(){
