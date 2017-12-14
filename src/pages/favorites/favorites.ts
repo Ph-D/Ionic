@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, ItemSliding,ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { FavoriteProvider } from '../../providers/favorite/favorite';
 import { Dish } from '../../shared/dish';
-import { Storage } from '@ionic/storage';
 /**
  * Generated class for the FavoritesPage page.
  *
@@ -25,18 +24,13 @@ export class FavoritesPage implements OnInit {
   private toastCtrl: ToastController,
   private loadingCtrl: LoadingController,
   private alertCtrl: AlertController,
-  private storage : Storage,
   @Inject('BaseURL') private BaseURL) {
-
   }
 
   ngOnInit(){
     this.favoriteservice.getFavorites()
-    .subscribe(favorites => {
-      this.favorites = favorites; 
-      this.storage.set('favorites', this.favorites  );
-      this.storage.get('favorites').then((favorites) => {this.favorites = favorites});
-    },errmess => this.errMess = errmess );   
+    .subscribe(favorites => this.favorites = favorites, 
+      errmess => this.errMess = errmess);
   }
      
       
@@ -69,7 +63,7 @@ export class FavoritesPage implements OnInit {
               duration: 3000});
             loading.present();
             this.favoriteservice.deleteFavorite(id)
-              .subscribe(favorites => {this.favorites = favorites;  this.storage.set('favorites', this.favorites  ); loading.dismiss(); toast.present(); } ,
+              .subscribe(favorites => {this.favorites = favorites; loading.dismiss(); toast.present(); } ,
                 errmess =>{ this.errMess = errmess; loading.dismiss(); });
           }
         }
