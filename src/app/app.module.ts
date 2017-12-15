@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { CommentPage } from '../pages/comment/comment';
@@ -61,6 +62,7 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LocalNotifications,
     DishProvider,
     LeaderProvider,
     PromotionProvider,
