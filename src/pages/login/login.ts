@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { Validators, FormBuilder,FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { User } from '../../shared/user';
+import { RegisterPage } from '../register/register';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -23,6 +25,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private viewCtrl: ViewController,
   private formBuilder: FormBuilder,
+  private modalCtrl: ModalController,
   private storage: Storage
   ) {
     this.loginForm = this.formBuilder.group({
@@ -65,4 +68,9 @@ export class LoginPage {
       
   }
 
+  openRegister(){
+    let modal = this.modalCtrl.create(RegisterPage);
+    modal.present();
+    modal.onDidDismiss(() => this.dismiss());
+  }
 }

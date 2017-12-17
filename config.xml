@@ -87,4 +87,6 @@
     <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.5" />
     <allow-navigation href="http://192.168.0.11:8100" />
     <plugin name="cordova-plugin-email" spec="^1.2.6" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
+    <plugin name="cordova-plugin-camera" spec="^3.0.0" />
 </widget>
