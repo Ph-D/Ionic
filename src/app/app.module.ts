@@ -28,6 +28,8 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
 import { RegisterPage } from '../pages/register/register';
 import { baseURL } from '../shared/baseurl';
 import { FavoriteProvider } from '../providers/favorite/favorite';
+import { Network } from '@ionic-native/network';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     LocalNotifications,
     EmailComposer,
     DishProvider,
+    Network,
     SocialSharing,
     Camera,
     LeaderProvider,
